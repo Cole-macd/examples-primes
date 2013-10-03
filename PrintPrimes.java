@@ -3,15 +3,15 @@ public class PrintPrimes {
   int rowsPerPage;
   int columnsPerPage;
   int WW;
-  int ORDMAX;
+  int sizeOfNotPrimes;
   int listOfPrimes[];
 
-  public PrintPrimes(int numberOfPrimes, int rowsPerPage, int columnsPerPage, int WW, int ORDMAX) {
+  public PrintPrimes(int numberOfPrimes, int rowsPerPage, int columnsPerPage, int WW, int sizeOfNotPrimes) {
     this.numberOfPrimes   = numberOfPrimes;
     this.rowsPerPage  = rowsPerPage;
     this.columnsPerPage  = columnsPerPage;
     this.WW  = WW;
-    this.ORDMAX = ORDMAX;
+    this.sizeOfNotPrimes = sizeOfNotPrimes;
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
 
@@ -35,7 +35,7 @@ public class PrintPrimes {
   private void calculateOddPrimes() {
       boolean isJPrime;
       int N;
-      int notPrimes[] = new int[ORDMAX + 1];
+      int notPrimes[] = new int[sizeOfNotPrimes + 1];
 
       int J = 1;
       int ORD = 2;
