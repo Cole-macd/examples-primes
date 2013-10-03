@@ -34,7 +34,7 @@ public class PrintPrimes {
 
   private void calculateOddPrimes() {
       boolean isJPrime;
-      int n;
+      int indexOfNotPrimes;
       int notPrimes[] = new int[sizeOfNotPrimes + 1];
 
       int currentOddNum = 1;
@@ -51,11 +51,11 @@ public class PrintPrimes {
           }
           
           isJPrime = true;
-          for (n = 2; n < indexOfReferencePrime && isJPrime; n++) {
-            while (notPrimes[n] < currentOddNum) {
-              notPrimes[n] = notPrimes[n] + (listOfPrimes[n] * 2);
+          for (indexOfNotPrimes = 2; indexOfNotPrimes < indexOfReferencePrime && isJPrime; indexOfNotPrimes++) {
+            while (notPrimes[indexOfNotPrimes] < currentOddNum) {
+              notPrimes[indexOfNotPrimes] = notPrimes[indexOfNotPrimes] + (listOfPrimes[indexOfNotPrimes] * 2);
             }
-            if (notPrimes[n] == currentOddNum) {
+            if (notPrimes[indexOfNotPrimes] == currentOddNum) {
               isJPrime = false;
             }
           }
