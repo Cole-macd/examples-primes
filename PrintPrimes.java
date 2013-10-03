@@ -33,38 +33,44 @@ public class PrintPrimes {
   }
 
   private void calculateOddPrimes() {
-      boolean isJPrime;
-      int indexOfNotPrimes;
-      int notPrimes[] = new int[sizeOfNotPrimes + 1];
+      boolean isCurrentNumPrime; 
+      int notPrimes[] = new int[sizeOfNotPrimes + 1]; 	//array that holds multiples of primes
+      int currentOddNum = 1; 							//current number being checked for being prime
+      int indexOfReferencePrime = 2;					//keeps track of how many prime multiples will be compared
+      int squareOfPrime = 9;							//initialized to 9 because first prime is 3
 
-      int currentOddNum = 1;
-      int indexOfReferencePrime = 2;
-      int squareOfPrime = 9;
-
+      /*loops through until specified number of primes is found*/
       for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
         do {
           currentOddNum = currentOddNum + 2;
+          
+          /*updates current square number when current odd number is the same*/
           if (currentOddNum == squareOfPrime) {
-        	notPrimes[indexOfReferencePrime] = currentOddNum;
-            indexOfReferencePrime = indexOfReferencePrime + 1;
+        	notPrimes[indexOfReferencePrime] = currentOddNum; //stores current square number
+            indexOfReferencePrime = indexOfReferencePrime + 1; //increases range of prime multiples being checked
             squareOfPrime = listOfPrimes[indexOfReferencePrime] * listOfPrimes[indexOfReferencePrime];
           }
           
-          isJPrime = true;
-          for (indexOfNotPrimes = 2; indexOfNotPrimes < indexOfReferencePrime && isJPrime; indexOfNotPrimes++) {
-            while (notPrimes[indexOfNotPrimes] < currentOddNum) {
-              notPrimes[indexOfNotPrimes] = notPrimes[indexOfNotPrimes] + (listOfPrimes[indexOfNotPrimes] * 2);
-            }
-            if (notPrimes[indexOfNotPrimes] == currentOddNum) {
-              isJPrime = false;
-            }
-          }
-        } while (!isJPrime);
-        
+          /*iterates through notPrimes array until reaching reference point*/
+          isCurrentNumPrime = true;
+          for (int indexOfNotPrimes = 2; indexOfNotPrimes < indexOfReferencePrime && isCurrentNumPrime; indexOfNotPrimes++) {
+        	  
+        	  /*increase multiples being checked so they are in the range of the current odd number*/
+              while (notPrimes[indexOfNotPrimes] < currentOddNum) {
+                notPrimes[indexOfNotPrimes] = notPrimes[indexOfNotPrimes] + (listOfPrimes[indexOfNotPrimes] * 2);
+              }
+              /*if current odd number is in the not prime multiples being checked then not prime*/
+              if (notPrimes[indexOfNotPrimes] == currentOddNum) {
+                isCurrentNumPrime = false;
+              }
+            } 
+        } while (!isCurrentNumPrime); 
+        /*upon exiting loop current number is prime*/
         listOfPrimes[primesFoundSoFar] = currentOddNum;
       }
     }
-
+  
+  
     public void printOutPrimes() {
         int pageNumber = 1;
         int pageOffset = 1;
