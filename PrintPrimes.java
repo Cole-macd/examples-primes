@@ -52,8 +52,9 @@ public class PrintPrimes {
           
           isJPrime = true;
           for (n = 2; n < indexOfReferencePrime && isJPrime; n++) {
-            while (notPrimes[n] < currentOddNum)
+            while (notPrimes[n] < currentOddNum) {
               notPrimes[n] = notPrimes[n] + (listOfPrimes[n] * 2);
+            }
             if (notPrimes[n] == currentOddNum) {
               isJPrime = false;
             }
