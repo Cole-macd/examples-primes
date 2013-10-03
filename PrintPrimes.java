@@ -19,7 +19,7 @@ public class PrintPrimes {
   public static void main(String[] args) {
       PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 10, 30);
       printPrimes.calculatePrimes();
-      printPrimes.printPrimes();
+      printPrimes.printOutPrimes();
   }
 
   public void calculatePrimes() {
@@ -65,7 +65,7 @@ public class PrintPrimes {
       }
     }
 
-    public void printPrimes() {
+    public void printOutPrimes() {
         int pageNumber = 1;
         int pageOffset = 1;
         
