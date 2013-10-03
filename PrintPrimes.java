@@ -33,7 +33,7 @@ public class PrintPrimes {
   }
 
   private void calculateOddPrimes() {
-      boolean JPRIME;
+      boolean isJPrime;
       int N;
       int MULT[] = new int[ORDMAX + 1];
 
@@ -50,15 +50,15 @@ public class PrintPrimes {
             MULT[ORD - 1] = J;
           }
           N = 2;
-          JPRIME = true;
-          while (N < ORD && JPRIME) {
+          isJPrime = true;
+          while (N < ORD && isJPrime) {
             while (MULT[N] < J)
               MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
             if (MULT[N] == J)
-              JPRIME = false;
+              isJPrime = false;
             N = N + 1;
           }
-        } while (!JPRIME);
+        } while (!isJPrime);
         listOfPrimes[primesFoundSoFar] = J;
       }
     }
@@ -66,9 +66,11 @@ public class PrintPrimes {
     public void printPrimes() {
         int pageNumber = 1;
         int pageOffset = 1;
+        
         while (pageOffset <= numberOfPrimes) {
           System.out.println("The First " + numberOfPrimes +
                                " Prime Numbers --- Page " + pageNumber + "\n");
+          
           for (int rowOffset = pageOffset; rowOffset < pageOffset + rowsPerPage; rowOffset++) {
             for (int c = 0; c < columnsPerPage; c++) {
               if (rowOffset + c * rowsPerPage <= numberOfPrimes) {
@@ -77,6 +79,7 @@ public class PrintPrimes {
             }
             System.out.println("");
           }
+          
           System.out.println("\f");
           pageNumber = pageNumber + 1;
           pageOffset = pageOffset + rowsPerPage * columnsPerPage;
