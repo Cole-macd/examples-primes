@@ -49,16 +49,20 @@ public class PrintPrimes {
             SQUARE = listOfPrimes[ORD] * listOfPrimes[ORD];
             notPrimes[ORD - 1] = J;
           }
+          
           N = 2;
           isJPrime = true;
+          
           while (N < ORD && isJPrime) {
             while (notPrimes[N] < J)
               notPrimes[N] = notPrimes[N] + listOfPrimes[N] + listOfPrimes[N];
-            if (notPrimes[N] == J)
+            if (notPrimes[N] == J) {
               isJPrime = false;
+            }
             N = N + 1;
           }
         } while (!isJPrime);
+        
         listOfPrimes[primesFoundSoFar] = J;
       }
     }
