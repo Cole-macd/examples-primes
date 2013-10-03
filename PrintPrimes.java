@@ -45,20 +45,18 @@ public class PrintPrimes {
         do {
           J = J + 2;
           if (J == squareOfPrime) {
-        	 indexOfReferencePrime = indexOfReferencePrime + 1;
+            indexOfReferencePrime = indexOfReferencePrime + 1;
             squareOfPrime = listOfPrimes[indexOfReferencePrime] * listOfPrimes[indexOfReferencePrime];
             notPrimes[indexOfReferencePrime - 1] = J;
           }
-
+          
           isJPrime = true;
           for (n = 2; n < indexOfReferencePrime && isJPrime; n++) {
-            while (notPrimes[n] < J) {
+            while (notPrimes[n] < J)
               notPrimes[n] = notPrimes[n] + listOfPrimes[n] + listOfPrimes[n];
-            }
             if (notPrimes[n] == J) {
               isJPrime = false;
             }
-            n = n + 1;
           }
         } while (!isJPrime);
         
