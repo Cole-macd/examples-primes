@@ -37,30 +37,30 @@ public class PrintPrimes {
       int n;
       int notPrimes[] = new int[sizeOfNotPrimes + 1];
 
-      int J = 1;
+      int j = 1;
       int indexOfReferencePrime = 2;
       int squareOfPrime = 9;
 
       for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
         do {
-          J = J + 2;
-          if (J == squareOfPrime) {
+          j = j + 2;
+          if (j == squareOfPrime) {
+        	notPrimes[indexOfReferencePrime] = j;
             indexOfReferencePrime = indexOfReferencePrime + 1;
             squareOfPrime = listOfPrimes[indexOfReferencePrime] * listOfPrimes[indexOfReferencePrime];
-            notPrimes[indexOfReferencePrime - 1] = J;
           }
           
           isJPrime = true;
           for (n = 2; n < indexOfReferencePrime && isJPrime; n++) {
-            while (notPrimes[n] < J)
-              notPrimes[n] = notPrimes[n] + listOfPrimes[n] + listOfPrimes[n];
-            if (notPrimes[n] == J) {
+            while (notPrimes[n] < j)
+              notPrimes[n] = notPrimes[n] + (listOfPrimes[n] * 2);
+            if (notPrimes[n] == j) {
               isJPrime = false;
             }
           }
         } while (!isJPrime);
         
-        listOfPrimes[primesFoundSoFar] = J;
+        listOfPrimes[primesFoundSoFar] = j;
       }
     }
 
