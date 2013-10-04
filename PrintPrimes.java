@@ -38,10 +38,10 @@ public class PrintPrimes {
    */
   private void calculateOddPrimes() {
       boolean isCurrentNumPrime; 
-      int notPrimes[] = new int[sizeOfNotPrimes + 1]; 	//array that holds multiples of primes
-      int currentOddNum = 1; 				//current number being checked for being prime
-      int indexOfReferencePrime = 2;			//keeps track of how many prime multiples will be compared
-      int squareOfPrime = 9;				//initialized to 9 because first prime is 3
+      int notPrimes[] = new int[sizeOfNotPrimes + 1]; //array that holds multiples of primes
+      int currentOddNum = 1; //current number being checked for being prime
+      int indexOfReferencePrime = 2; //keeps track of how many prime multiples will be compared
+      int squareOfPrime = 9; //initialized to 9 because first prime is 3
 
       /*loops through until specified number of primes is found*/
       for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
