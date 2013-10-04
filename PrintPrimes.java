@@ -31,7 +31,11 @@ public class PrintPrimes {
       listOfPrimes[1] = 2;
       calculateOddPrimes();
   }
-
+  /* Method calculates all odd prime numbers by incrementing a variable through 
+   * odd numbers which is then checked against an array of multiples of previous 
+   * primes. If the number being incremented does not match any multiples then it
+   * is added to an array of prime numbers.
+   */
   private void calculateOddPrimes() {
       boolean isCurrentNumPrime; 
       int notPrimes[] = new int[sizeOfNotPrimes + 1]; 	//array that holds multiples of primes
@@ -65,20 +69,26 @@ public class PrintPrimes {
               }
             } 
         } while (!isCurrentNumPrime); 
-        /*upon exiting loop current number is prime*/
+        /*upon exiting for loop current number is prime*/
         listOfPrimes[primesFoundSoFar] = currentOddNum;
       }
     }
   
-  
+  	/* Prints out prime numbers from listOfPrimes array based on input
+  	 * specifications passed in for rows and columns
+  	 * */
     public void printOutPrimes() {
         int pageNumber = 1;
-        int pageOffset = 1;
+        int pageOffset = 1; 
+        int primesPerPage = rowsPerPage * columnsPerPage; //max number of primes on one page
         
+        /*prints primes until number of primes is reached*/
         while (pageOffset <= numberOfPrimes) {
+          /*prints out page header for each page*/
           System.out.println("The First " + numberOfPrimes +
                                " Prime Numbers --- Page " + pageNumber + "\n");
           
+          /*prints out primes on one page based on columns per page and rows per page*/
           for (int rowOffset = pageOffset; rowOffset < pageOffset + rowsPerPage; rowOffset++) {
             for (int c = 0; c < columnsPerPage; c++) {
               if (rowOffset + c * rowsPerPage <= numberOfPrimes) {
@@ -90,7 +100,9 @@ public class PrintPrimes {
           
           System.out.println("\f");
           pageNumber = pageNumber + 1;
-          pageOffset = pageOffset + rowsPerPage * columnsPerPage;
+          
+          /*incremements page offset to determine whether another page is needed*/
+          pageOffset = pageOffset + primesPerPage; 
         }
     }
 }
